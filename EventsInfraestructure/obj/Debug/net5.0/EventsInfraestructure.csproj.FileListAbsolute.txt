@@ -1,0 +1,5 @@
+C:\Users\Skytech\source\repos\Events\EventsInfraestructure\obj\Debug\net5.0\EventsInfraestructure.csprojAssemblyReference.cache
+C:\Users\Skytech\source\repos\Events\EventsInfraestructure\obj\Debug\net5.0\EventsInfraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Skytech\source\repos\Events\EventsInfraestructure\obj\Debug\net5.0\EventsInfraestructure.AssemblyInfoInputs.cache
+C:\Users\Skytech\source\repos\Events\EventsInfraestructure\obj\Debug\net5.0\EventsInfraestructure.AssemblyInfo.cs
+C:\Users\Skytech\source\repos\Events\EventsInfraestructure\obj\Debug\net5.0\EventsInfraestructure.csproj.CoreCompileInputs.cache
