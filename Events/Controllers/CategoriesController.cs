@@ -130,10 +130,11 @@ namespace Events.Controllers
         {
             var eventEntity = new Event
             {
+
               EventName = eventt.EventName,
               TicketQuantity = eventt.Quantity,
               Price = eventt.Price,
-              CategoryId = eventt.CategoryId
+              CategoryId = categoryId
             };
 
             var result = _eventService.CreateEvent(eventEntity);
@@ -142,6 +143,7 @@ namespace Events.Controllers
             {
                 return NotFound(result.Error);
             }
+
             return Ok(eventt);
         }
 
