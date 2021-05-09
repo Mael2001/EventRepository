@@ -13,7 +13,7 @@ namespace EventsInfraestructure.Data.Repositories
             _context = context;
         }
         public abstract IReadOnlyList<TEntity> Get();
-        public abstract IReadOnlyList<TEntity> Get(int id);
+        public abstract TEntity Get(int id);
         public abstract TEntity Get(int categoryId, int eventId);
         public TEntity Create(TEntity entity)
         {

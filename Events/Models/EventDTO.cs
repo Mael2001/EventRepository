@@ -12,8 +12,10 @@ namespace Events.Models
         public string EventName { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
-        public double Total { get; set; }
-        public Category Category { get; set; }
+
+        //public double Total { get; set; }
+
+        //public Category Category { get; set; }
         public int CategoryId { get; set; }
     }
 }

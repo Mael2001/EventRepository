@@ -30,11 +30,11 @@ namespace EventsInfraestructure.Data.Contexts
             //seeding
             modelBuilder.Entity<Category>().HasData(new Category
             {
-                Id = -2,
+                Id = 1,
                 CategoryName = "Concert"
             }, new Category
             {
-                Id = -1,
+                Id = 0,
                 CategoryName = "Theaters"
             });
         }

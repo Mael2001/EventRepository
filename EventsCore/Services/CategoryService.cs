@@ -6,24 +6,40 @@ namespace EventsCore.Services
 {
     public class CategoryService: ICategoryService
     {
-        public ServiceResult<IReadOnlyList<Category>> GetComments()
+
+        private readonly IRepository<Category> _categoryRepository;
+
+        public CategoryService(IRepository<Category> categoryRepository)
         {
-            throw new System.NotImplementedException();
+            _categoryRepository = categoryRepository;
         }
 
-        public ServiceResult<Category> GetCatogoryById(int id)
+        public ServiceResult<IReadOnlyList<Category>> GetCategories()
         {
-            throw new System.NotImplementedException();
+            var categories = _categoryRepository.Get();
+            return ServiceResult<IReadOnlyList<Category>>.SuccessResult(categories);
         }
 
-        public ServiceResult<double> GetTotal()
+        public ServiceResult<Category> GetCategoryById(int id)
         {
-            throw new System.NotImplementedException();
+            var category = _categoryRepository.Get(id);
+
+            if(category == null)
+            {
+                return ServiceResult<Category>.NotFoundResult($"No se encontro categoria con el id {id}");
+            }
+
+            return ServiceResult<Category>.SuccessResult(category);
         }
 
-        public ServiceResult<double> GetTotalTaxes()
-        {
-            throw new System.NotImplementedException();
-        }
+        //public ServiceResult<double> GetTotal()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
+
+        //public ServiceResult<double> GetTotalTaxes()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
     }
 }

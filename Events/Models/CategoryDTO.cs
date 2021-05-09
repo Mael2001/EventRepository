@@ -10,8 +10,9 @@ namespace Events.Models
     {
         public string CategoryName { get; set; }
         public int Id { get; set; }
-        public double Tax { get; set; }
-        public double Total { get; set; }
-        public ICollection<Event> Events { get; set; } = new HashSet<Event>();
+
+        //public double Tax { get; set; }
+        //public double Total { get; set; }
+        //public ICollection<Event> Events { get; set; } = new HashSet<Event>();
     }
 }

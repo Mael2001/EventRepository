@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using EventsCore.Entities;
 using EventsInfraestructure.Data.Contexts;
 
@@ -15,12 +16,12 @@ namespace EventsInfraestructure.Data.Repositories
 
         public override IReadOnlyList<Event> Get()
         {
-            throw new System.NotImplementedException();
+            return _context.Events.ToList();
         }
 
-        public override IReadOnlyList<Event> Get(int id)
+        public override Event Get(int id)
         {
-            throw new System.NotImplementedException();
+            return _context.Events.FirstOrDefault(x => x.Id == id);
         }
 
         public override Event Get(int categoryId, int eventId)

@@ -5,11 +5,11 @@ namespace EventsCore.Interfaces
 {
     public interface ICategoryService
     {
-        ServiceResult<IReadOnlyList<Category>> GetComments();
+        ServiceResult<IReadOnlyList<Category>> GetCategories();
 
-        ServiceResult<Category> GetCatogoryById(int id);
+        ServiceResult<Category> GetCategoryById(int id);
 
-        ServiceResult<double> GetTotal();
-        ServiceResult<double> GetTotalTaxes();
+        //ServiceResult<double> GetTotal();
+        //ServiceResult<double> GetTotalTaxes();
     }
 }
