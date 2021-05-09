@@ -1,4 +1,5 @@
 ﻿using Events.Models;
+using EventsCore.Entities;
 using EventsCore.Enum;
 using EventsCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -58,7 +59,7 @@ namespace Events.Controllers
 
         //listar todos los eventos
 
-        [HttpGet]
+        [HttpGet("/events")]
 
         public ActionResult<IEnumerable<EventDTO>> GetAllEvents()
         {
@@ -76,7 +77,7 @@ namespace Events.Controllers
 
 
         //listar eventos por id
-        [HttpGet("events/{eventId}")]
+        [HttpGet("/events/{eventId}")]
 
         public ActionResult<EventDTO> GetEventById(int id)
         {
@@ -97,6 +98,52 @@ namespace Events.Controllers
             });
         }
 
+        //obtener eventos de una categoria en especifico
+
+        [HttpGet("{categoryId}/events")]
+
+        public ActionResult<IEnumerable<EventDTO>> GetEventForCategory(int categoryId)
+        {
+            var result = _eventService.FilterEventByCategoryId(categoryId);
+
+            if(result.ResponseCode == ResponseCode.NotFound)
+            {
+                return NotFound(result.Error);
+            }
+
+            return Ok(result.Result.Select(e => new EventDTO
+            {
+                EventName = e.EventName,
+                Quantity  = e.TicketQuantity,
+                Price = e.Price,
+                CategoryId = e.CategoryId
+            }));
+        }
+
+
+        //crear eventos por categoria
+        //no esta mal escrito , event es una variable reservada de .NET
+
+        [HttpPost("{categoryId}/events")]
+
+        public ActionResult<EventDTO> CreateEventForCategory(int categoryId,[FromBody] EventDTO eventt)
+        {
+            var eventEntity = new Event
+            {
+              EventName = eventt.EventName,
+              TicketQuantity = eventt.Quantity,
+              Price = eventt.Price,
+              CategoryId = eventt.CategoryId
+            };
+
+            var result = _eventService.CreateEvent(eventEntity);
+
+            if(result.ResponseCode == ResponseCode.NotFound)
+            {
+                return NotFound(result.Error);
+            }
+            return Ok(eventt);
+        }
 
 
 

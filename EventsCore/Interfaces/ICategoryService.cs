@@ -6,7 +6,6 @@ namespace EventsCore.Interfaces
     public interface ICategoryService
     {
         ServiceResult<IReadOnlyList<Category>> GetCategories();
-
         ServiceResult<Category> GetCategoryById(int id);
 
         //ServiceResult<double> GetTotal();

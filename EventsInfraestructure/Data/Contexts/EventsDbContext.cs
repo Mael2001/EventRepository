@@ -34,7 +34,7 @@ namespace EventsInfraestructure.Data.Contexts
                 CategoryName = "Concert"
             }, new Category
             {
-                Id = 0,
+                Id = 2,
                 CategoryName = "Theaters"
             });
         }

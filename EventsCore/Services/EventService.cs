@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using EventsCore.Entities;
 using EventsCore.Interfaces;
 
@@ -22,6 +23,8 @@ namespace EventsCore.Services
 
         public ServiceResult<Event> GetEventById(int id)
         {
+
+            //no esta mal escrito , event es una variable reservada de .NET
             var eventt = _eventRepository.Get(id);
             if(eventt == null)
             {
@@ -34,12 +37,42 @@ namespace EventsCore.Services
 
         public ServiceResult<IReadOnlyList<Event>> FilterEventByCategoryId(int categoryId)
         {
-            throw new System.NotImplementedException();
+            var category = _categoryRepository.Get(categoryId);
+            
+            if(category == null)
+            {
+                return ServiceResult<IReadOnlyList<Event>>.NotFoundResult($"No se encontro una categoria con el id {categoryId}");
+            }
+
+            if(!category.Events.Any())
+            {
+                return ServiceResult<IReadOnlyList<Event>>.NotFoundResult($"No hay eventos para la categoria de id {categoryId}");
+            }
+
+            return ServiceResult<IReadOnlyList<Event>>.SuccessResult(category.Events.ToList());
+
+            
         }
 
         public ServiceResult<Event> CreateEvent(Event entity)
         {
-            throw new System.NotImplementedException();
+            var category = _categoryRepository.Get(entity.CategoryId);
+
+            if(category == null)
+            {
+                return ServiceResult<Event>.NotFoundResult($"No se encontro categoria con el id {entity.CategoryId}");
+            }
+
+            var eventt = _eventRepository.Get(entity.Id);
+
+            if(eventt == null)
+            {
+                return ServiceResult<Event>.NotFoundResult($"No se encontro evento con el id {entity.Id}");
+            }
+
+            return ServiceResult<Event>.SuccessResult(eventt);
         }
+
+
     }
 }
