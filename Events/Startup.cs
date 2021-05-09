@@ -13,6 +13,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using EventsInfraestructure.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
+using EventsCore.Interfaces;
+using EventsCore.Entities;
+using EventsInfraestructure.Data.Repositories;
+using EventsCore.Services;
 
 namespace Events
 {
@@ -30,6 +34,10 @@ namespace Events
         {
             services
                 .AddDbContext<EventsDbContext>(c => c.UseSqlite("Data Source=Events.db"));
+            services.AddScoped<IRepository<Category>, CategoryRepository>();
+            services.AddScoped<IRepository<Event>, EventRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IEventService, EventService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
