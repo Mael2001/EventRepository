@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QMe8qO90f7LvqUdTAGlKrHaz3nV1z0A/bBREv6hdZUTtzB4T+mpO4nzERl4HA5e4CW8gxcWYxJsWR2JufQHl9w==",
+  "dgSpecHash": "d7ZPF3mFHzk6mljVXsEgljH8+eoHJSAS3k1aStp/jpJSkanrFLdiBjJMRLGLo7T67vhk+8VCK1c1xAhgu+XC+w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\isaac\\Source\\Repos\\EventRepository\\EventsCore\\EventsCore.csproj",
+  "projectFilePath": "C:\\Users\\Skytech\\source\\repos\\Events\\EventsCore\\EventsCore.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

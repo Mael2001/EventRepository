@@ -8,19 +8,24 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\isaac\\.nuget\\packages\\": {}
+    "C:\\Users\\Skytech\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\isaac\\Source\\Repos\\EventRepository\\EventsCore\\EventsCore.csproj",
+      "projectUniqueName": "C:\\Users\\Skytech\\source\\repos\\Events\\EventsCore\\EventsCore.csproj",
       "projectName": "EventsCore",
-      "projectPath": "C:\\Users\\isaac\\Source\\Repos\\EventRepository\\EventsCore\\EventsCore.csproj",
-      "packagesPath": "C:\\Users\\isaac\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\isaac\\Source\\Repos\\EventRepository\\EventsCore\\obj\\",
+      "projectPath": "C:\\Users\\Skytech\\source\\repos\\Events\\EventsCore\\EventsCore.csproj",
+      "packagesPath": "C:\\Users\\Skytech\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Skytech\\source\\repos\\Events\\EventsCore\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\isaac\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Skytech\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -15,6 +15,7 @@ namespace Events.Controllers
     [Route("[controller]")]
     public class CategoriesController : ControllerBase
     {
+        private readonly ICollection<Event> _shoppingCart;
 
         private readonly ICategoryService _categoryService;
         private readonly IEventService _eventService;
@@ -100,7 +101,7 @@ namespace Events.Controllers
 
         //obtener eventos de una categoria en especifico
 
-        [HttpGet("{categoryId}/events")]
+        [HttpGet("/{categoryId}/events")]
 
         public ActionResult<IEnumerable<EventDTO>> GetEventForCategory(int categoryId)
         {
@@ -124,7 +125,7 @@ namespace Events.Controllers
         //crear eventos por categoria
         //no esta mal escrito , event es una variable reservada de .NET
 
-        [HttpPost("{categoryId}/events")]
+        [HttpPost("/{categoryId}/events")]
 
         public ActionResult<EventDTO> CreateEventForCategory(int categoryId,[FromBody] EventDTO eventt)
         {
@@ -147,9 +148,41 @@ namespace Events.Controllers
             return Ok(eventt);
         }
 
+        [HttpPost("/new/cart")]
+        public ActionResult<bool> addEventToCart([FromBody] EventDTO eventt)
+        {
+            var objectCart = _eventService.GetEventById(eventt.Id);
+            if ( objectCart.ResponseCode != ResponseCode.NotFound)
+            {
+                _shoppingCart.Add(new Event
+                {
+                    Category = objectCart.Result.Category,
+                    CategoryId = objectCart.Result.CategoryId,
+                    EventName = objectCart.Result.EventName,
+                    Id = objectCart.Result.Id,
+                    Price = objectCart.Result.Price,
+                    TicketQuantity = objectCart.Result.TicketQuantity
+                });
+                return Ok(true);
+            }
 
+            return NotFound(false);
+        }
 
+        [HttpGet("/factura")]
+        public ActionResult<double> returnRecipe()
+        {
+            double total = 0;
+            for (int i = 0; i < _shoppingCart.Count; i++)
+            {
+                double subTotal=0;
+                subTotal += _shoppingCart.ElementAt(i).Price;
+                subTotal *= _shoppingCart.ElementAt(i).TicketQuantity;
+                total += subTotal;
+            }
 
-
+            return Ok($"El total de la compra es: {total}");
+        }
+        
     }
 }
