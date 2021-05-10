@@ -56,23 +56,9 @@ namespace EventsCore.Services
 
         public ServiceResult<Event> CreateEvent(Event entity)
         {
-            var category = _categoryRepository.Get(entity.CategoryId);
-
-            if(category == null)
-            {
-                return ServiceResult<Event>.NotFoundResult($"No se encontro categoria con el id {entity.CategoryId}");
-            }
-
-            var eventt = _eventRepository.Get(entity.Id);
-
-            if(eventt == null)
-            {
-                return ServiceResult<Event>.NotFoundResult($"No se encontro evento con el id {entity.Id}");
-            }
-
-            return ServiceResult<Event>.SuccessResult(eventt);
+            Event newEvent = _eventRepository.Create(entity);
+            return ServiceResult<Event>.SuccessResult(newEvent);
         }
-
 
     }
 }
