@@ -80,9 +80,9 @@ namespace Events.Controllers
         //listar eventos por id
         [HttpGet("/events/{eventId}")]
 
-        public ActionResult<EventDTO> GetEventById(int id)
+        public ActionResult<EventDTO> GetEventById(int eventId)
         {
-            var eventResult = _eventService.GetEventById(id);
+            var eventResult = _eventService.GetEventById(eventId);
 
             if(eventResult.ResponseCode == ResponseCode.NotFound)
             {
