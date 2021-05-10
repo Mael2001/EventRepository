@@ -149,7 +149,7 @@ namespace Events.Controllers
         }
 
         [HttpPost("/new/cart")]
-        public ActionResult<bool> addEventToCart([FromBody] EventDTO eventt)
+        public ActionResult<bool> AddEventToCart([FromBody] EventDTO eventt)
         {
             var objectCart = _eventService.GetEventById(eventt.Id);
             if ( objectCart.ResponseCode != ResponseCode.NotFound)
@@ -170,7 +170,7 @@ namespace Events.Controllers
         }
 
         [HttpGet("/factura")]
-        public ActionResult<double> returnRecipe()
+        public ActionResult<double> ReturnRecipe()
         {
             double total = 0;
             for (int i = 0; i < _shoppingCart.Count; i++)
